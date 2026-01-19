@@ -23,7 +23,7 @@ import firebase_admin
 from firebase_admin import credentials, db
 
 
-# -------------------- Firebase Setup --------------------
+
 
 def setup_firebase():
     """Initialize Firebase only once."""
@@ -38,7 +38,6 @@ setup_firebase()
 students_ref = db.reference("Students")
 
 
-# -------------------- Resource Loading --------------------
 
 def load_mode_images(folder_path: str):
     """Load all mode UI images into a list."""
@@ -58,7 +57,7 @@ def load_encodings(file_path: str):
     return known_encodings, known_ids
 
 
-# -------------------- Attendance Logic --------------------
+
 
 def can_mark_attendance(last_time_str: str, cooldown_seconds: int = 30) -> bool:
     """Check if enough time has passed to mark attendance again."""
@@ -84,7 +83,7 @@ def update_attendance(student_id: str, student_data: dict):
     student_data["last_attendance_time"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
 
-# -------------------- Main Application Loop --------------------
+
 
 def main():
     # Webcam configuration
@@ -149,7 +148,7 @@ def main():
                         frame_counter = 1
                         current_mode = 1
 
-            # -------------------- Student Data Handling --------------------
+            
 
             if frame_counter == 1:
                 active_student = students_ref.child(active_id).get()
@@ -185,7 +184,7 @@ def main():
                     current_mode = 3
                     frame_counter = 0
 
-            # -------------------- Display Phase --------------------
+         
 
             if current_mode != 3:
                 if 10 < frame_counter < 20:
@@ -262,7 +261,7 @@ def main():
         cv2.waitKey(1)
 
 
-# -------------------- Entry Point --------------------
+
 
 if __name__ == "__main__":
     main()
