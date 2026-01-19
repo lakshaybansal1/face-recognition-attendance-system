@@ -19,7 +19,7 @@ import firebase_admin
 from firebase_admin import credentials, db
 
 
-# -------------------- Firebase Initialization --------------------
+
 
 def initialize_firebase():
     """Initialize Firebase connection using service account credentials."""
@@ -34,7 +34,7 @@ initialize_firebase()
 students_ref = db.reference("Students")
 
 
-# -------------------- Main Application Class --------------------
+
 
 class AttendanceManager:
     def __init__(self, root: tk.Tk):
@@ -47,7 +47,7 @@ class AttendanceManager:
         self.build_ui()
         self.refresh_table()
 
-    # -------------------- UI Construction --------------------
+  
 
     def build_ui(self):
         """Create and arrange all GUI components."""
@@ -155,7 +155,7 @@ class AttendanceManager:
         for _, row in self.data_frame.iterrows():
             self.table.insert("", tk.END, values=row.tolist())
 
-    # -------------------- Event Handlers --------------------
+    
 
     def load_selected_record(self, event):
         """Load selected row into input fields."""
@@ -251,7 +251,7 @@ class AttendanceManager:
         self.total_entry.delete(0, tk.END)
 
 
-# -------------------- App Launcher --------------------
+
 
 if __name__ == "__main__":
     root = tk.Tk()
